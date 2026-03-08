@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:notifications="clr-namespace:FireFenyx.Wpf.Notifications.Controls;assembly=FireFenyx.Wpf.Notifications"
+        xmlns:notifyModels="clr-namespace:FireFenyx.Wpf.Notifications.Models;assembly=FireFenyx.Wpf.Notifications"
         xmlns:notifySvc="clr-namespace:FireFenyx.Wpf.Notifications.Services;assembly=FireFenyx.Wpf.Notifications"
         Title="FireFenyx.Wpf.Notifications.SampleApp"
         Width="800"
@@ -22,19 +23,31 @@
                     <Setter Property="MinWidth" Value="220" />
                 </Style>
             </StackPanel.Resources>
-            <Button Click="Success_Click" Content="Show Success" />
-            <Button Click="Warning_Click" Content="Show Warning" />
-            <Button Click="Error_Click" Content="Show Error" />
-            <Button Click="Progress_Click" Content="Show Progress" />
-            <Button Click="SendFile_Click" Content="Send File (complex)" />
-            <Button Click="ShowPersistent_Click" Content="Show Persistent (no connection)" />
-            <Button Click="DismissPersistent_Click" Content="Dismiss Persistent" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
+                <TextBlock Text="Bar Style:" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <ComboBox MinWidth="140"
+                          SelectedValue="{Binding SelectedBarStyle}"
+                          SelectedValuePath="Tag">
+                    <ComboBoxItem Content="AccentStrip" Tag="{x:Static notifyModels:NotificationBarStyle.AccentStrip}" />
+                    <ComboBoxItem Content="Fluent" Tag="{x:Static notifyModels:NotificationBarStyle.Fluent}" />
+                </ComboBox>
+            </StackPanel>
+
+            <Button Command="{Binding ShowSuccessCommand}" Content="Show Success" />
+            <Button Command="{Binding ShowWarningCommand}" Content="Show Warning" />
+            <Button Command="{Binding ShowErrorCommand}" Content="Show Error" />
+            <Button Command="{Binding ShowProgressCommand}" Content="Show Progress" />
+            <Button Command="{Binding SendFileComplexScenarioCommand}" Content="Send File (complex)" />
+            <Button Command="{Binding ShowPersistentNoConnectionCommand}" Content="Show Persistent (no connection)" />
+            <Button Command="{Binding DismissPersistentCommand}" Content="Dismiss Persistent" />
         </StackPanel>
 
         <!--  Notification Host  -->
         <notifications:NotificationHost
             x:Name="Notifications"
             notifySvc:NotificationHostService.Queue="{Binding NotificationQueue}"
+            BarStyle="{Binding SelectedBarStyle}"
             HostPosition="Bottom"
             DefaultDurationMs="4000"
             DefaultTransition="SlideAndFade"

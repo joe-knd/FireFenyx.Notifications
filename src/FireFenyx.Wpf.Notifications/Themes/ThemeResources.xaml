@@ -13,6 +13,12 @@
     <SolidColorBrush x:Key="NotificationWarningBrush" Color="#9D5D00" />
     <SolidColorBrush x:Key="NotificationErrorBrush" Color="#C42B1C" />
 
+    <!--  Filled-mode severity background brushes  -->
+    <SolidColorBrush x:Key="NotificationSuccessFilledBrush" Color="#FF26452D" />
+    <SolidColorBrush x:Key="NotificationInfoFilledBrush" Color="#FF263545" />
+    <SolidColorBrush x:Key="NotificationWarningFilledBrush" Color="#FF453B26" />
+    <SolidColorBrush x:Key="NotificationErrorFilledBrush" Color="#FF442626" />
+
     <!--  Close button style  -->
     <Style x:Key="NotificationCloseButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />

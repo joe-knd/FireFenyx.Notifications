@@ -20,16 +20,23 @@ public partial class MainViewModel : ObservableObject
     private CancellationTokenSource? _sendCts;
     private volatile bool _sendPaused;
 
-    public void ShowSuccess()
+    [ObservableProperty]
+    private NotificationBarStyle _selectedBarStyle = NotificationBarStyle.AccentStrip;
+
+    [RelayCommand]
+    private void ShowSuccess()
         => _notifications.Success("Operation completed successfully!");
 
-    public void ShowWarning()
+    [RelayCommand]
+    private void ShowWarning()
         => _notifications.Warning("This is a warning message.");
 
-    public void ShowError()
+    [RelayCommand]
+    private void ShowError()
         => _notifications.Error("Something went wrong!", durationMs: 5000);
 
-    public void ShowProgress()
+    [RelayCommand]
+    private void ShowProgress()
     {
         var handle = _notifications.ShowProgress("Uploading...", durationMs: 1500, progress: 0);
 
@@ -45,7 +52,8 @@ public partial class MainViewModel : ObservableObject
         });
     }
 
-    public void SendFileComplexScenario()
+    [RelayCommand]
+    private void SendFileComplexScenario()
     {
         _sendCts?.Cancel();
         _sendCts?.Dispose();
@@ -129,7 +137,8 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    public void ShowPersistentNoConnection()
+    [RelayCommand]
+    private void ShowPersistentNoConnection()
     {
         _persistent ??= _notifications.ShowPersistent(
             "Connection not found. Retrying...",
@@ -137,7 +146,8 @@ public partial class MainViewModel : ObservableObject
             isClosable: false);
     }
 
-    public void DismissPersistent()
+    [RelayCommand]
+    private void DismissPersistent()
     {
         if (_persistent is not null)
         {

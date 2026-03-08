@@ -206,6 +206,27 @@ public sealed partial class NotificationHost : UserControl
         set => SetValue(NotificationMaxWidthProperty, value);
     }
 
+    /// <summary>
+    /// Identifies the <see cref="BarStyle"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty BarStyleProperty =
+        DependencyProperty.Register(
+            nameof(BarStyle),
+            typeof(NotificationBarStyle),
+            typeof(NotificationHost),
+            new PropertyMetadata(NotificationBarStyle.AccentStrip));
+
+    /// <summary>
+    /// Gets or sets the visual style used for notification bars.
+    /// <see cref="NotificationBarStyle.AccentStrip"/> shows a colored strip on the leading edge;
+    /// <see cref="NotificationBarStyle.Fluent"/> uses a severity-colored background.
+    /// </summary>
+    public NotificationBarStyle BarStyle
+    {
+        get => (NotificationBarStyle)GetValue(BarStyleProperty);
+        set => SetValue(BarStyleProperty, value);
+    }
+
     private readonly SemaphoreSlim _transitionGate = new(1, 1);
 
     private sealed class NotificationVisual
@@ -456,7 +477,8 @@ public sealed partial class NotificationHost : UserControl
 
         // Main grid: accent strip | content | close button
         var mainGrid = new Grid();
-        mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(4) });
+        var accentWidth = BarStyle == NotificationBarStyle.Fluent ? 0 : 4;
+        mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(accentWidth) });
         mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
         mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
@@ -758,9 +780,9 @@ public sealed partial class NotificationHost : UserControl
         }
     }
 
-    private static void ApplyLevel(NotificationVisual visual, NotificationLevel level)
+    private void ApplyLevel(NotificationVisual visual, NotificationLevel level)
     {
-        var (icon, brushKey) = level switch
+        var (icon, accentBrushKey) = level switch
         {
             NotificationLevel.Success => ("\u2714", "NotificationSuccessBrush"),
             NotificationLevel.Warning => ("\u26A0", "NotificationWarningBrush"),
@@ -768,16 +790,40 @@ public sealed partial class NotificationHost : UserControl
             _ => ("\u2139", "NotificationInfoBrush")
         };
 
-        var brush = Application.Current?.TryFindResource(brushKey) as Brush
+        var accentBrush = Application.Current?.TryFindResource(accentBrushKey) as Brush
             ?? new SolidColorBrush(Color.FromRgb(0x00, 0x63, 0xB1));
 
-        visual.AccentRect.Background = brush;
         visual.IconText.Text = icon;
-        visual.IconText.Foreground = brush;
+        visual.IconText.Foreground = accentBrush;
+
+        if (BarStyle == NotificationBarStyle.Fluent)
+        {
+            var filledBrushKey = level switch
+            {
+                NotificationLevel.Success => "NotificationSuccessFilledBrush",
+                NotificationLevel.Warning => "NotificationWarningFilledBrush",
+                NotificationLevel.Error => "NotificationErrorFilledBrush",
+                _ => "NotificationInfoFilledBrush"
+            };
+
+            var filledBrush = Application.Current?.TryFindResource(filledBrushKey) as Brush
+                ?? accentBrush;
+
+            visual.Bar.Background = filledBrush;
+            visual.AccentRect.Background = Brushes.Transparent;
+        }
+        else
+        {
+            visual.AccentRect.Background = accentBrush;
+        }
     }
 
-    private static void ApplyMaterial(NotificationVisual visual, NotificationMaterial material)
+    private void ApplyMaterial(NotificationVisual visual, NotificationMaterial material)
     {
+        // In Fluent mode, the severity color IS the background.
+        if (BarStyle == NotificationBarStyle.Fluent)
+            return;
+
         var key = material switch
         {
             NotificationMaterial.Acrylic => "NotificationAcrylicBrush",

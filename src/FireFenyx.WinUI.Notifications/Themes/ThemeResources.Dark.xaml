@@ -10,5 +10,11 @@
         TintOpacity="0.6" />
 
     <SolidColorBrush x:Key="NotificationMicaBrush" Color="#202020" />
+
+    <!--  Severity accent brushes (used in Accent bar style)  -->
+    <SolidColorBrush x:Key="NotificationSuccessBrush" Color="#0F7B0F" />
+    <SolidColorBrush x:Key="NotificationInfoBrush" Color="#0063B1" />
+    <SolidColorBrush x:Key="NotificationWarningBrush" Color="#9D5D00" />
+    <SolidColorBrush x:Key="NotificationErrorBrush" Color="#C42B1C" />
 </ResourceDictionary>
 

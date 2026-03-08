@@ -207,6 +207,27 @@ public sealed partial class NotificationHost : UserControl
         set => SetValue(NotificationMaxWidthProperty, value);
     }
 
+    /// <summary>
+    /// Identifies the <see cref="BarStyle"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty BarStyleProperty =
+        DependencyProperty.Register(
+            nameof(BarStyle),
+            typeof(NotificationBarStyle),
+            typeof(NotificationHost),
+            new PropertyMetadata(NotificationBarStyle.Fluent));
+
+    /// <summary>
+    /// Gets or sets the visual style used for notification bars.
+    /// <see cref="NotificationBarStyle.AccentStrip"/> shows a colored strip on the leading edge;
+    /// <see cref="NotificationBarStyle.Fluent"/> uses a severity-colored background.
+    /// </summary>
+    public NotificationBarStyle BarStyle
+    {
+        get => (NotificationBarStyle)GetValue(BarStyleProperty);
+        set => SetValue(BarStyleProperty, value);
+    }
+
     internal VerticalAlignment HostVerticalAlignment
         => HostPosition == NotificationHostPosition.Top ? VerticalAlignment.Top : VerticalAlignment.Bottom;
 
@@ -240,6 +261,7 @@ public sealed partial class NotificationHost : UserControl
         public string? ActionText { get; set; }
         public ICommand? ActionCommand { get; set; }
         public object? ActionCommandParameter { get; set; }
+        public Border? AccentRect { get; set; }
     }
 
     private readonly Dictionary<Guid, NotificationVisual> _visuals = new();
@@ -488,7 +510,21 @@ public sealed partial class NotificationHost : UserControl
 
         container.Children.Add(bar);
 
-        return new NotificationVisual(id, container, bar, message, progress, actionButton);
+        var visual = new NotificationVisual(id, container, bar, message, progress, actionButton);
+
+        if (BarStyle == NotificationBarStyle.AccentStrip)
+        {
+            var accentRect = new Border
+            {
+                Width = 4,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                CornerRadius = new CornerRadius(6, 0, 0, 6)
+            };
+            container.Children.Add(accentRect);
+            visual.AccentRect = accentRect;
+        }
+
+        return visual;
     }
 
     private void CloseClicked(Guid id)
@@ -667,7 +703,7 @@ public sealed partial class NotificationHost : UserControl
         }
     }
 
-    private static void ApplyLevel(NotificationVisual visual, NotificationLevel level)
+    private void ApplyLevel(NotificationVisual visual, NotificationLevel level)
     {
         visual.Bar.Severity = level switch
         {
@@ -677,10 +713,30 @@ public sealed partial class NotificationHost : UserControl
             NotificationLevel.Error => InfoBarSeverity.Error,
             _ => InfoBarSeverity.Informational
         };
+
+        if (BarStyle == NotificationBarStyle.AccentStrip && visual.AccentRect is not null)
+        {
+            var brushKey = level switch
+            {
+                NotificationLevel.Success => "NotificationSuccessBrush",
+                NotificationLevel.Warning => "NotificationWarningBrush",
+                NotificationLevel.Error => "NotificationErrorBrush",
+                _ => "NotificationInfoBrush"
+            };
+
+            if (Application.Current.Resources.TryGetValue(brushKey, out var brush))
+            {
+                visual.AccentRect.Background = (Brush)brush;
+            }
+        }
     }
 
-    private static void ApplyMaterial(NotificationVisual visual, NotificationMaterial material)
+    private void ApplyMaterial(NotificationVisual visual, NotificationMaterial material)
     {
+        // In Fluent mode, let InfoBar's built-in severity styling control the background.
+        if (BarStyle == NotificationBarStyle.Fluent)
+            return;
+
         var key = material switch
         {
             NotificationMaterial.Acrylic => "NotificationAcrylicBrush",

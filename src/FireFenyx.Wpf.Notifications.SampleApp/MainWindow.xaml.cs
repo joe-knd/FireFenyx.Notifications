@@ -17,25 +17,4 @@ public partial class MainWindow : Window
         ViewModel = App.Services.GetRequiredService<MainViewModel>()!;
         DataContext = ViewModel;
     }
-
-    private void Success_Click(object sender, RoutedEventArgs e)
-        => ViewModel.ShowSuccess();
-
-    private void Warning_Click(object sender, RoutedEventArgs e)
-        => ViewModel.ShowWarning();
-
-    private void Error_Click(object sender, RoutedEventArgs e)
-        => ViewModel.ShowError();
-
-    private void Progress_Click(object sender, RoutedEventArgs e)
-        => ViewModel.ShowProgress();
-
-    private void SendFile_Click(object sender, RoutedEventArgs e)
-        => ViewModel.SendFileComplexScenario();
-
-    private void ShowPersistent_Click(object sender, RoutedEventArgs e)
-        => ViewModel.ShowPersistentNoConnection();
-
-    private void DismissPersistent_Click(object sender, RoutedEventArgs e)
-        => ViewModel.DismissPersistent();
 }

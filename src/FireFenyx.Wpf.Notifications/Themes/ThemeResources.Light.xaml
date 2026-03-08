@@ -6,4 +6,16 @@
     <SolidColorBrush x:Key="NotificationAcrylicBrush" Color="#E0F0F0F0" />
     <SolidColorBrush x:Key="NotificationMicaBrush" Color="#F5F5F5" />
 
+    <!--  Severity accent brushes  -->
+    <SolidColorBrush x:Key="NotificationSuccessBrush" Color="#0F7B0F" />
+    <SolidColorBrush x:Key="NotificationInfoBrush" Color="#0063B1" />
+    <SolidColorBrush x:Key="NotificationWarningBrush" Color="#9D5D00" />
+    <SolidColorBrush x:Key="NotificationErrorBrush" Color="#C42B1C" />
+
+    <!--  Filled-mode severity background brushes  -->
+    <SolidColorBrush x:Key="NotificationSuccessFilledBrush" Color="#FFDFF6DD" />
+    <SolidColorBrush x:Key="NotificationInfoFilledBrush" Color="#FFEFF6FC" />
+    <SolidColorBrush x:Key="NotificationWarningFilledBrush" Color="#FFFFF4CE" />
+    <SolidColorBrush x:Key="NotificationErrorFilledBrush" Color="#FFFDE7E9" />
+
 </ResourceDictionary>
