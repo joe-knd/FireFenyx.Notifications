@@ -1,7 +1,7 @@
-using FireFenyx.Wpf.Notifications.Models;
+using FireFenyx.Notifications.Models;
 using System;
 
-namespace FireFenyx.Wpf.Notifications.Services;
+namespace FireFenyx.Notifications.Services;
 
 /// <summary>
 /// Default implementation of <see cref="INotificationService"/> that enqueues requests into an <see cref="INotificationQueue"/>.

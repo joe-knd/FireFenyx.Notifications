@@ -1,6 +1,6 @@
 ﻿using FireFenyx.WinUI.Notifications.Extensions;
-using FireFenyx.WinUI.Notifications.SampleApp.Services;
-using FireFenyx.WinUI.Notifications.SampleApp.ViewModels;
+using FireFenyx.Notifications.SampleApp.Services;
+using FireFenyx.Notifications.SampleApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
@@ -42,7 +42,7 @@ public partial class App : Application
         services.AddSingleton<MainViewModel>();
 
         // UI services
-        services.AddSingleton<IDialogService>(_ => new ContentDialogService(() => MainWindow));
+        services.AddSingleton<IDialogService>(_ => new Services.ContentDialogService(() => MainWindow));
 
         Services = services.BuildServiceProvider();
     }

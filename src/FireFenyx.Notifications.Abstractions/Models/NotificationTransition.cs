@@ -1,4 +1,4 @@
-﻿namespace FireFenyx.WinUI.Notifications.Models;
+namespace FireFenyx.Notifications.Models;
 
 /// <summary>
 /// Defines the animation used when showing and dismissing a notification.

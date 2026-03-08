@@ -1,4 +1,4 @@
-using FireFenyx.Wpf.Notifications.SampleApp.ViewModels;
+using FireFenyx.Notifications.SampleApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 

@@ -1,4 +1,5 @@
 ﻿using FireFenyx.WinUI.Notifications.Controls;
+using FireFenyx.Notifications.Services;
 using Microsoft.UI.Xaml;
 
 namespace FireFenyx.WinUI.Notifications.Services;

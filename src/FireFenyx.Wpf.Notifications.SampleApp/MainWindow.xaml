@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:notifications="clr-namespace:FireFenyx.Wpf.Notifications.Controls;assembly=FireFenyx.Wpf.Notifications"
-        xmlns:notifyModels="clr-namespace:FireFenyx.Wpf.Notifications.Models;assembly=FireFenyx.Wpf.Notifications"
-        xmlns:notifySvc="clr-namespace:FireFenyx.Wpf.Notifications.Services;assembly=FireFenyx.Wpf.Notifications"
+        xmlns:notifyModels="clr-namespace:FireFenyx.Notifications.Models;assembly=FireFenyx.Notifications.Abstractions"
         Title="FireFenyx.Wpf.Notifications.SampleApp"
         Width="800"
         Height="600"
@@ -46,7 +45,6 @@
         <!--  Notification Host  -->
         <notifications:NotificationHost
             x:Name="Notifications"
-            notifySvc:NotificationHostService.Queue="{Binding NotificationQueue}"
             BarStyle="{Binding SelectedBarStyle}"
             HostPosition="Bottom"
             DefaultDurationMs="4000"

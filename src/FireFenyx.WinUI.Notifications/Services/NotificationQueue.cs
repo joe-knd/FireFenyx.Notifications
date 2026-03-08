@@ -1,4 +1,5 @@
-﻿using FireFenyx.WinUI.Notifications.Models;
+﻿using FireFenyx.Notifications.Models;
+using FireFenyx.Notifications.Services;
 using Microsoft.UI.Dispatching;
 using System;
 using System.Threading.Channels;

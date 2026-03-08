@@ -1,4 +1,4 @@
-namespace FireFenyx.Wpf.Notifications.Models;
+namespace FireFenyx.Notifications.Models;
 
 /// <summary>
 /// Controls the visual appearance of notification bars.

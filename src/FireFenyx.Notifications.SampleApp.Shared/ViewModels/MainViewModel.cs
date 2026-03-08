@@ -1,25 +1,28 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FireFenyx.WinUI.Notifications.Models;
-using FireFenyx.WinUI.Notifications.SampleApp.Services;
-using FireFenyx.WinUI.Notifications.Services;
-using FireFenyx.WinUI.Notifications.SampleApp;
-using Microsoft.Extensions.DependencyInjection;
+using FireFenyx.Notifications.Models;
+using FireFenyx.Notifications.SampleApp.Services;
+using FireFenyx.Notifications.Services;
 
-namespace FireFenyx.WinUI.Notifications.SampleApp.ViewModels;
+namespace FireFenyx.Notifications.SampleApp.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
-    public INotificationQueue NotificationQueue { get; } = App.Services.GetRequiredService<INotificationQueue>();
-    private readonly INotificationService _notifications = App.Services.GetRequiredService<INotificationService>();
-    private readonly IDialogService _dialogs = App.Services.GetRequiredService<IDialogService>();
+    private readonly INotificationService _notifications;
+    private readonly IDialogService _dialogs;
     private IPersistentNotification? _persistent;
 
     private CancellationTokenSource? _sendCts;
     private volatile bool _sendPaused;
+
+    public MainViewModel(INotificationService notifications, IDialogService dialogs)
+    {
+        _notifications = notifications;
+        _dialogs = dialogs;
+    }
 
     public NotificationBarStyle[] BarStyleOptions { get; } = Enum.GetValues<NotificationBarStyle>();
 
@@ -159,5 +162,4 @@ public partial class MainViewModel : ObservableObject
         _persistent = null;
         _notifications.Success("Connection restored!");
     }
-
 }

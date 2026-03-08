@@ -1,5 +1,5 @@
-using FireFenyx.WinUI.Notifications.Models;
-using FireFenyx.WinUI.Notifications.Services;
+using FireFenyx.Notifications.Models;
+using FireFenyx.Notifications.Services;
 using System;
 using Xunit;
 

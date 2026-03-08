@@ -1,7 +1,7 @@
-using FireFenyx.Wpf.Notifications.Models;
+using FireFenyx.Notifications.Models;
 using System;
 
-namespace FireFenyx.Wpf.Notifications.Services;
+namespace FireFenyx.Notifications.Services;
 
 /// <summary>
 /// Provides a high-level API for showing and updating in-app notifications.
@@ -9,7 +9,7 @@ namespace FireFenyx.Wpf.Notifications.Services;
 public interface INotificationService
 {
     /// <summary>
-    /// Enqueues a notification request to be displayed by a <see cref="Controls.NotificationHost"/>.
+    /// Enqueues a notification request to be displayed by a notification host.
     /// </summary>
     /// <param name="request">The request to display.</param>
     void Show(NotificationRequest request);

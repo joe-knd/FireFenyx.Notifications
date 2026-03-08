@@ -6,7 +6,7 @@ using Windows.Foundation;
 
 namespace FireFenyx.WinUI.Notifications.SampleApp.Services;
 
-public sealed class ContentDialogService(Func<Window?> windowAccessor) : IDialogService
+public sealed class ContentDialogService(Func<Window?> windowAccessor) : FireFenyx.Notifications.SampleApp.Services.IDialogService
 {
     public async Task<bool> ConfirmAsync(string title, string message, string confirmText = "Yes", string cancelText = "No")
     {

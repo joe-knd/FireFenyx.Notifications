@@ -1,8 +1,8 @@
-﻿using FireFenyx.WinUI.Notifications.Models;
+using FireFenyx.Notifications.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace FireFenyx.WinUI.Notifications.Services;
+namespace FireFenyx.Notifications.Services;
 
 /// <summary>
 /// Represents a queue that accepts <see cref="NotificationRequest"/> objects and processes them sequentially.
@@ -20,5 +20,4 @@ public interface INotificationQueue
     /// </summary>
     /// <param name="processor">The processor function.</param>
     void SetProcessor(Func<NotificationRequest, Task> processor);
-
 }

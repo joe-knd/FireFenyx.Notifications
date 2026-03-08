@@ -1,4 +1,5 @@
-using FireFenyx.Wpf.Notifications.Models;
+using FireFenyx.Notifications.Models;
+using FireFenyx.Notifications.Services;
 using System;
 using System.Threading.Channels;
 using System.Threading.Tasks;

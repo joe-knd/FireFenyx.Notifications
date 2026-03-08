@@ -1,5 +1,6 @@
 using FireFenyx.WinUI.Notifications.Extensions;
-using FireFenyx.WinUI.Notifications.Models;
+using FireFenyx.Notifications.Models;
+using FireFenyx.Notifications.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -272,6 +273,18 @@ public sealed partial class NotificationHost : UserControl
     public NotificationHost()
     {
         InitializeComponent();
+        Loaded += OnLoaded;
+    }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        // Auto-connect to the default queue registered via AddNotificationServices()
+        // if no queue was explicitly set through the attached property.
+        if (Services.NotificationHostService.GetQueue(this) is null
+            && Services.NotificationDefaults.Queue is { } queue)
+        {
+            Services.NotificationHostService.SetQueue(this, queue);
+        }
     }
 
     private static void OnHostPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

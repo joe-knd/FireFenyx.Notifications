@@ -1,4 +1,8 @@
-<Solution>
+﻿<Solution>
+  <Folder Name="/Shared/">
+    <Project Path="src/FireFenyx.Notifications.Abstractions/FireFenyx.Notifications.Abstractions.csproj" />
+    <Project Path="src/FireFenyx.Notifications.SampleApp.Shared/FireFenyx.Notifications.SampleApp.Shared.csproj" />
+  </Folder>
   <Folder Name="/WinUI/">
     <Project Path="src/FireFenyx.WinUI.Notifications.SampleApp/FireFenyx.WinUI.Notifications.SampleApp.csproj">
       <Platform Project="x64" />

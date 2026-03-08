@@ -1,4 +1,4 @@
-﻿namespace FireFenyx.WinUI.Notifications.Models;
+namespace FireFenyx.Notifications.Models;
 
 /// <summary>
 /// Defines the background material used when rendering a notification.

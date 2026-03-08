@@ -2,10 +2,10 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace FireFenyx.Wpf.Notifications.Models;
+namespace FireFenyx.Notifications.Models;
 
 /// <summary>
-/// Represents a notification to display (or update) in a <see cref="Controls.NotificationHost"/>.
+/// Represents a notification to display (or update) in a notification host.
 /// </summary>
 public sealed class NotificationRequest
 {

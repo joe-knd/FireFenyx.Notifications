@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:notifications="using:FireFenyx.WinUI.Notifications.Controls"
-    xmlns:notifySvc="using:FireFenyx.WinUI.Notifications.Services"
     Title="FireFenyx.WinUI.Notifications.SampleApp"
     mc:Ignorable="d">
 
@@ -39,7 +38,6 @@
         <!--  Notification Host  -->
         <notifications:NotificationHost
             x:Name="Notifications"
-            notifySvc:NotificationHostService.Queue="{x:Bind ViewModel.NotificationQueue, Mode=OneTime}"
             BarStyle="{x:Bind ViewModel.SelectedBarStyle, Mode=OneWay}"
             HostPosition="Bottom"
             DefaultDurationMs="4000"

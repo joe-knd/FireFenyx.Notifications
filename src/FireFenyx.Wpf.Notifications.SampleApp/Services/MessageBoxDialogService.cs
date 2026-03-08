@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace FireFenyx.Wpf.Notifications.SampleApp.Services;
 
-public sealed class MessageBoxDialogService(Func<Window?> windowAccessor) : IDialogService
+public sealed class MessageBoxDialogService(Func<Window?> windowAccessor) : FireFenyx.Notifications.SampleApp.Services.IDialogService
 {
     public Task<bool> ConfirmAsync(string title, string message, string confirmText = "Yes", string cancelText = "No")
     {

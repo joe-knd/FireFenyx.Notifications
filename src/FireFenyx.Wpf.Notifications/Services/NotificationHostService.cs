@@ -1,4 +1,5 @@
 using FireFenyx.Wpf.Notifications.Controls;
+using FireFenyx.Notifications.Services;
 using System.Windows;
 
 namespace FireFenyx.Wpf.Notifications.Services;

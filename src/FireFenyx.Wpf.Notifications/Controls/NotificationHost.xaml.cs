@@ -1,5 +1,6 @@
 using FireFenyx.Wpf.Notifications.Extensions;
-using FireFenyx.Wpf.Notifications.Models;
+using FireFenyx.Notifications.Models;
+using FireFenyx.Notifications.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -273,6 +274,18 @@ public sealed partial class NotificationHost : UserControl
         InitializeComponent();
         EnsureThemeResources();
         ApplyLayout();
+        Loaded += OnLoaded;
+    }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        // Auto-connect to the default queue registered via AddNotificationServices()
+        // if no queue was explicitly set through the attached property.
+        if (Services.NotificationHostService.GetQueue(this) is null
+            && Services.NotificationDefaults.Queue is { } queue)
+        {
+            Services.NotificationHostService.SetQueue(this, queue);
+        }
     }
 
     private static bool _resourcesLoaded;

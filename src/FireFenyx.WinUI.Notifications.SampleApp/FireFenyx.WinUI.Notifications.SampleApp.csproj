@@ -35,11 +35,11 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.1" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FireFenyx.WinUI.Notifications\FireFenyx.WinUI.Notifications.csproj" />
+    <ProjectReference Include="..\FireFenyx.Notifications.SampleApp.Shared\FireFenyx.Notifications.SampleApp.Shared.csproj" />
   </ItemGroup>
   <!-- Publish Properties -->
   <PropertyGroup>
