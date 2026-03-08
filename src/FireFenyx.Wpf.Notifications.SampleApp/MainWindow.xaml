@@ -1,0 +1,46 @@
+<Window x:Class="FireFenyx.Wpf.Notifications.SampleApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:notifications="clr-namespace:FireFenyx.Wpf.Notifications.Controls;assembly=FireFenyx.Wpf.Notifications"
+        xmlns:notifySvc="clr-namespace:FireFenyx.Wpf.Notifications.Services;assembly=FireFenyx.Wpf.Notifications"
+        Title="FireFenyx.Wpf.Notifications.SampleApp"
+        Width="800"
+        Height="600"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+
+    <Grid x:Name="Root">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Margin" Value="0,6" />
+                    <Setter Property="Padding" Value="16,8" />
+                    <Setter Property="MinWidth" Value="220" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Click="Success_Click" Content="Show Success" />
+            <Button Click="Warning_Click" Content="Show Warning" />
+            <Button Click="Error_Click" Content="Show Error" />
+            <Button Click="Progress_Click" Content="Show Progress" />
+            <Button Click="SendFile_Click" Content="Send File (complex)" />
+            <Button Click="ShowPersistent_Click" Content="Show Persistent (no connection)" />
+            <Button Click="DismissPersistent_Click" Content="Dismiss Persistent" />
+        </StackPanel>
+
+        <!--  Notification Host  -->
+        <notifications:NotificationHost
+            x:Name="Notifications"
+            notifySvc:NotificationHostService.Queue="{Binding NotificationQueue}"
+            HostPosition="Bottom"
+            DefaultDurationMs="4000"
+            DefaultTransition="SlideAndFade"
+            DefaultMaterial="Acrylic"
+            HostHorizontalAlignment="Center"
+            HostSpacing="10"
+            HostPadding="0,0,0,8" />
+    </Grid>
+</Window>
