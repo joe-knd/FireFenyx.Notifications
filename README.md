@@ -2,10 +2,10 @@
 
 Toast-style in-app notification library for **WPF** and **WinUI 3** with animated transitions, progress tracking, persistent notifications, and two built-in visual styles.
 
-[![CI](https://github.com/joe-knd/FireFenyx.WinUI.Notifications/actions/workflows/ci.yml/badge.svg)](https://github.com/joe-knd/FireFenyx.WinUI.Notifications/actions/workflows/ci.yml)
+[![CI](https://github.com/joe-knd/FireFenyx.Notifications/actions/workflows/ci.yml/badge.svg)](https://github.com/joe-knd/FireFenyx.Notifications/actions/workflows/ci.yml)
 [![NuGet WinUI](https://img.shields.io/nuget/v/FireFenyx.WinUI.Notifications.svg?label=WinUI)](https://www.nuget.org/packages/FireFenyx.WinUI.Notifications)
 [![NuGet WPF](https://img.shields.io/nuget/v/FireFenyx.Wpf.Notifications.svg?label=WPF)](https://www.nuget.org/packages/FireFenyx.Wpf.Notifications)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/FireFenyx.WinUI.Notifications.svg)](https://www.nuget.org/packages/FireFenyx.WinUI.Notifications)
+[![NuGet Abstractions](https://img.shields.io/nuget/v/FireFenyx.Notifications.Abstractions.svg?label=Abstractions)](https://www.nuget.org/packages/FireFenyx.Notifications.Abstractions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![.NET 10](https://img.shields.io/badge/.NET-10-purple)
 
@@ -15,7 +15,7 @@ Toast-style in-app notification library for **WPF** and **WinUI 3** with animate
 
 | WPF | WinUI |
 |-----|-------|
-| [▶ Watch WPF demo](videos/wpf.mp4) | [▶ Watch WinUI demo](videos/winUI.mp4) |
+| [▶ Watch WPF demo](https://github.com/joe-knd/FireFenyx.Notifications/raw/main/videos/wpf.mp4) | [▶ Watch WinUI demo](https://github.com/joe-knd/FireFenyx.Notifications/raw/main/videos/winUI.mp4) |
 
 ## Notification Styles
 
@@ -25,7 +25,7 @@ A severity-colored background inspired by the WinUI InfoBar.
 
 | WPF | WinUI |
 |-----|-------|
-| ![WPF Fluent](images/Wpf-Fluent.png) | ![WinUI Fluent](images/winUI-Fluent.png) |
+| ![WPF Fluent](https://raw.githubusercontent.com/joe-knd/FireFenyx.Notifications/main/images/Wpf-Fluent.png) | ![WinUI Fluent](https://raw.githubusercontent.com/joe-knd/FireFenyx.Notifications/main/images/winUI-Fluent.png) |
 
 ### AccentStrip
 
@@ -33,7 +33,7 @@ A colored accent strip on the leading edge with a material background.
 
 | WPF | WinUI |
 |-----|-------|
-| ![WPF Strip](images/Wpf-Strip.png) | ![WinUI Strip](images/WinUI-Strip.png) |
+| ![WPF Strip](https://raw.githubusercontent.com/joe-knd/FireFenyx.Notifications/main/images/Wpf-Strip.png) | ![WinUI Strip](https://raw.githubusercontent.com/joe-knd/FireFenyx.Notifications/main/images/WinUI-Strip.png) |
 
 ---
 
