@@ -12,7 +12,7 @@
     <!-- NuGet package -->
     <IsPackable>true</IsPackable>
     <PackageId>FireFenyx.WinUI.Notifications</PackageId>
-    <Description>In-app toast-style notification host and service for WinUI 3 � animated transitions, progress tracking, persistent notifications, Fluent and AccentStrip styles.</Description>
+    <Description>In-app toast-style notification host and service for WinUI 3 — animated transitions, progress tracking, persistent notifications, Fluent and AccentStrip styles.</Description>
     <PackageTags>winui;notifications;toast;snackbar;infobar</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
