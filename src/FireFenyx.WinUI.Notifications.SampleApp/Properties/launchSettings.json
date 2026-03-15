@@ -1,8 +1,5 @@
 {
   "profiles": {
-    "FireFenyx.WinUI.Notifications.SampleApp (Package)": {
-      "commandName": "MsixPackage"
-    },
     "FireFenyx.WinUI.Notifications.SampleApp (Unpackaged)": {
       "commandName": "Project"
     }
